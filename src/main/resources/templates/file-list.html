@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lista de Arquivos</title>
+    <style>
+        body {
+            background-color: #14b614; /* Cor de fundo */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Centraliza na parte superior da tela */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 30px; /* Espaço entre o título e a lista de arquivos */
+            color: #fff; /* Cor branca para o título */
+            font-size: 36px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            margin-top: 10px; /* Espaço entre os itens da lista */
+        }
+
+        li span {
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista de Arquivos</h1>
+
+<ul>
+    <li th:each="fileName : ${fileNames}">
+        <span th:text="${fileName}"></span>
+    </li>
+</ul>
+
+<!--<ul>-->
+<!--    <li th:each="path : ${paths}">-->
+<!--        <span th:text="${path}"></span>-->
+<!--        <form action="/b3/file/download" method="get">-->
+<!--            <input type="hidden" name="path" th:value="${path}" />-->
+<!--            <button type="submit">Download Arquivos</button>-->
+<!--        </form>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<form action="/b3/file/downloads" method="get">
+    <input type="hidden" name="paths" th:value="${paths}" />
+    <button type="submit">Download Arquivos</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Upload de Arquivos</title>
+    <style>
+        body {
+            background-color: #14b614; /* Cor de fundo */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Centraliza na parte superior da tela */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 30px; /* Espaço entre o título e o formulário */
+            color: #fff; /* Cor branca para o título */
+            font-size: 36px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #14b614;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Upload de Arquivos</h1>
+
+<form action="/b3/file/transformation" method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple="multiple"/>
+    <button type="submit">Enviar Arquivos</button>
+</form>
+</body>
+</html>
