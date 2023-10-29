@@ -30,9 +30,7 @@ import java.util.zip.ZipOutputStream;
 @RequestMapping(value = "b3/file")
 public class FileController {
 
-    // TODO melhorar a aparência da página
     // TODO colocar autenticação
-    // TODO subir na AWS
     // TODO colocar tratamento para exceções
     // TODO refatorar o código
 
@@ -50,26 +48,6 @@ public class FileController {
         List<String> paths = fileService.transformFile(files);
         model.addAttribute("paths", paths);
         return "file-list";
-    }
-
-    @GetMapping("/download")
-    public ResponseEntity<InputStreamResource> downloadFile(@RequestParam("path") String path) {
-        try {
-            File file = new File(path);
-            FileInputStream inputStream = new FileInputStream(file);
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Disposition", "attachment; filename=" + file.getName() );
-
-            return ResponseEntity
-                    .ok()
-                    .headers(headers)
-                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                    .body(new InputStreamResource(inputStream));
-        } catch (IOException e) {
-            log.error(e.getMessage());
-            return ResponseEntity.notFound().build();
-        }
     }
 
     @GetMapping("/downloads")
